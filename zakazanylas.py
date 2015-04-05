@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Licencja
+Autor: Mateusz "Simbax" Przybyl
+Licencja: GPLv3 
+Python: 2.7
+Strona: github.com/MrSimbax/Zakazany-Las
 """
 
 from sys import exit
 
-# Stałe.
+# Stale.
 ###############################################################################
 ZNAK_ZACHETY = "> "
 
@@ -18,7 +21,7 @@ decyzje = {}
 ###############################################################################
 def wybor(zakres=0, prompt=ZNAK_ZACHETY):
     """
-    Funkcja przyjmująca komendy od użytkownika.
+    Funkcja przyjmujaca komendy od uzytkownika.
     """
     while True:
         liczba = raw_input(prompt)
@@ -27,30 +30,30 @@ def wybor(zakres=0, prompt=ZNAK_ZACHETY):
             if liczba == 0:
                 exit(0)
             elif liczba > zakres or liczba < 0:
-                print u"Błąd! Zła liczba!"
+                print u"Blad! Zla liczba!"
             else:
                 return liczba
         else:
-            print u"Błąd! Musisz wpisać liczbę!"
+            print u"Blad! Musisz wpisac liczbe!"
 
 # Interfejs.
 ###############################################################################
-# Działa następująco:
-# Najpierw definiujemy pierwszą funkcję przy pomocy dodaj_wywolanie.
-# Następnie wywołujemy funkcję wywolywuj_funkcje.
-# Wewnątrz pierwszej funkcji dodajemy wywołanie do kolejnej.
-# Dzięki temu, gdy pierwsza się zakończy, jest uruchamiania druga.
-# Jeśli żadna funkcja nie została zdefiniowana, to wywoływanie się kończy.
+# Dziala nastepujaco:
+# Najpierw definiujemy pierwsza funkcje przy pomocy dodaj_wywolanie.
+# Nastepnie wywolujemy funkcje wywolywuj_funkcje.
+# Wewnatrz pierwszej funkcji dodajemy wywolanie do kolejnej.
+# Dzieki temu, gdy pierwsza sie zakonczy, jest uruchamiania druga.
+# Jesli zadna funkcja nie zostala zdefiniowana, to wywolywanie sie konczy.
 
 # Zmienne pomocnicze.
 nastepna_funkcja = ""
 
 def wykonaj(nazwa_funkcji):
-    """Wykonuje funkcję nazwa_funkcji (string) i zwraca jej wynik."""
+    """Wykonuje funkcje nazwa_funkcji (string) i zwraca jej wynik."""
     return globals()[nazwa_funkcji]()
 
 def wywolywuj_funkcje():
-    """Wywołuje funkcje, dopóki jest zdefiniowana nastepna_funkcja."""
+    """Wywoluje funkcje, dopoki jest zdefiniowana nastepna_funkcja."""
     global nastepna_funkcja
     while nastepna_funkcja != None:
         funkcja = nastepna_funkcja
@@ -58,41 +61,42 @@ def wywolywuj_funkcje():
         wykonaj(funkcja)
 
 def dodaj_wywolanie(nazwa_funkcji):
-    """Po wykonaniu funkcji, w której ta została użyta, zostanie wykonana
-    kolejna (podana w argumencie). Działa razem z wywolywuj_funkcje."""
+    """Po wykonaniu funkcji, w ktorej ta zostala uzyta, zostanie wykonana
+    kolejna (podana w argumencie). Dziala razem z wywolywuj_funkcje."""
     global nastepna_funkcja
     nastepna_funkcja = nazwa_funkcji
 
 # Logika gry.
 ###############################################################################
 def start():
-    """Od tego zaczyna się gra."""
+    """Od tego zaczyna sie gra."""
     reset()
     print (
         u"\nWitaj w grze \"Zakazany Las\"!\n\n"
-        u"Przed Tobą czeka krótka przygoda, w której każda Twoja decyzja\n"
-        u"będzie miała wpływ na dalszy bieg wydarzeń.\n"
-        u"Przed każdą decyzją pojawi się krótka historyjka i lista\n"
-        u"dostępnych, ponumerowanych decyzji. Wpisz liczbę reprezentującą\n"
-        u"wybraną przez Ciebie decyzję i zatwierdź przyciskiem ENTER.\n\n"
-        u"W grze nie ma żadnych zapisów i łatwo można zginąć, ale nic nie\n"
-        u"stoi na przeszkodzie, aby zaczynać od nowa!\n\n"
-        u"Życzę miłej zabawy!\n"
-        u"Mateusz Przybył, autor tej gry\n\n"
-        #u"Kod gry wydany na licencji GPLv3 na stronie github.com/zakazanylas\n\n"
-        u"W każdej chwili możesz wpisać 0, aby wyjść.\n"
-        u"1. Zacznij grę."
+        u"Przed Toba czeka krotka przygoda, w ktorej kazda Twoja decyzja\n"
+        u"bedzie miala wplyw na dalszy bieg wydarzen.\n"
+        u"Przed kazda decyzja pojawi sie krotka historyjka i lista\n"
+        u"dostepnych, ponumerowanych decyzji. Wpisz liczbe reprezentujaca\n"
+        u"wybrana przez Ciebie decyzje i zatwierdz przyciskiem ENTER.\n\n"
+        u"W grze nie ma zadnych zapisow i latwo mozna zginac, ale nic nie\n"
+        u"stoi na przeszkodzie, aby zaczynac od nowa!\n\n"
+        u"zycze milej zabawy!\n"
+        u"Mateusz Przybyl, autor tej gry\n\n"
+        u"Kod gry zostal wydany na licencji GPLv3 na stronie\n"
+        u"github.com/MrSimbax/Zakazany-Las\n\n"
+        u"W kazdej chwili mozesz wpisac 0, aby wyjsc.\n"
+        u"1. Zacznij gre."
     )
 
     poczatek = wybor(1)
 
     print (
-        u"\nJesteś podróżnikiem. Postanowiłeś przejść się na spacer,\n"
-        u"jak zwykle po południu. Zmieniłeś tym razem drogę i zatrzymałeś\n"
-        u"się na skraju lasu. Gęstwina drzew przed Tobą wygląda tajemniczo,\n"
-        u"ale również interesująco.\n"
-        u"1. Wejdź do lasu.\n"
-        u"2. Wróć do domu."
+        u"\nJestes podroznikiem. Postanowiles przejsc sie na spacer,\n"
+        u"jak zwykle po poludniu. Zmieniles tym razem droge i zatrzymales\n"
+        u"sie na skraju lasu. Gestwina drzew przed Toba wyglada tajemniczo,\n"
+        u"ale rowniez interesujaco.\n"
+        u"1. Wejdz do lasu.\n"
+        u"2. Wroc do domu."
     )
     poczatek = wybor(2)
 
@@ -103,15 +107,15 @@ def start():
 
 def las():
     print (
-        u"\nWchodzisz do lasu. Ciarki przeszły Cię po plecach.\n"
-        u"Ścieżka wygląda na nieużywaną od lat. To źle wróży.\n"
-        u"Jednak idziesz dalej, aż w końcu napotykasz na rozdroże.\n"
-        u"Wtem słyszysz szelest dobiegający zza krzaków.\n"
-        u"Może warto wrócić, póki nie jest za późno?\n"
-        u"1. Idź w lewo.\n"
-        u"2. Idź w prawo.\n"
-        u"3. Sprawdź, co mogło wywołać szelest.\n"
-        u"4. Zawróć."
+        u"\nWchodzisz do lasu. Ciarki przeszly Cie po plecach.\n"
+        u"sciezka wyglada na nieuzywana od lat. To zle wrozy.\n"
+        u"Jednak idziesz dalej, az w koncu napotykasz na rozdroze.\n"
+        u"Wtem slyszysz szelest dobiegajacy zza krzakow.\n"
+        u"Moze warto wrocic, poki nie jest za pozno?\n"
+        u"1. Idz w lewo.\n"
+        u"2. Idz w prawo.\n"
+        u"3. Sprawdz, co moglo wywolac szelest.\n"
+        u"4. Zawroc."
     )
 
     dzialanie = wybor(4)
@@ -127,11 +131,11 @@ def las():
 
 def rozdroze():
     print (
-        u"\nJesteś z powrotem na rozdrożu.\n"
-        u"1. Idź w lewo.\n"
-        u"2. Idź w prawo.\n"
-        u"3. Sprawdź krzaki.\n"
-        u"4. Zawróć."
+        u"\nJestes z powrotem na rozdrozu.\n"
+        u"1. Idz w lewo.\n"
+        u"2. Idz w prawo.\n"
+        u"3. Sprawdz krzaki.\n"
+        u"4. Zawroc."
     )
     dzialanie = wybor(4)
 
@@ -148,18 +152,18 @@ def sciezka_w_lewo():
     global decyzje
     if decyzje["nora"] == True:
         print (
-            u"\nZnowu spotykasz tajemniczego królika. Nie zamierzasz wracać\n"
-            u"do króliczej nory, więc odwracasz się na pięcie i idziesz."
+            u"\nZnowu spotykasz tajemniczego krolika. Nie zamierzasz wracac\n"
+            u"do kroliczej nory, wiec odwracasz sie na piecie i idziesz."
         )
         dodaj_wywolanie("rozdroze")
         return
     print (
-        u"\nPo kilku minutach marszu zaczynasz odczuwać nudę. W pewnym momencie\n"
-        u"zauważasz niewielkiego królika, który Tobie się przypatruje.\n"
-        u"Postanawiasz się zatrzymać na chwilę i go pogłaskać. Jednak\n"
-        u"jak tylko się zbliżasz, królik ucieka.\n"
-        u"1. Goń królika.\n"
-        u"2. Zawróć."
+        u"\nPo kilku minutach marszu zaczynasz odczuwac nude. W pewnym momencie\n"
+        u"zauwazasz niewielkiego krolika, ktory Tobie sie przypatruje.\n"
+        u"Postanawiasz sie zatrzymac na chwile i go poglaskac. Jednak\n"
+        u"jak tylko sie zblizasz, krolik ucieka.\n"
+        u"1. Gon krolika.\n"
+        u"2. Zawroc."
     )
     dzialanie = wybor(2)
     if dzialanie == 1:
@@ -170,37 +174,37 @@ def sciezka_w_lewo():
 
 def krolicza_nora_1():
     print (
-        u"\nZ niewiadomego powodu odczuwasz potrzebę pogłaskania królika, więc\n"
-        u"biegniesz za nim. Nagle tracisz grunt pod stopami i stwierdzasz, że\n"
-        u"wpadłeś do dziury. Bardzo głębokiej dziury, bo spadasz, i spadasz,\n"
+        u"\nZ niewiadomego powodu odczuwasz potrzebe poglaskania krolika, wiec\n"
+        u"biegniesz za nim. Nagle tracisz grunt pod stopami i stwierdzasz, ze\n"
+        u"wpadles do dziury. Bardzo glebokiej dziury, bo spadasz, i spadasz,\n"
         u"i spadasz, i spadasz, i spadasz, i spadasz, i spadasz, i spadasz,\n"
-        u"aż w końcu lądujesz w prawie pustym pokoju. Jesteś zdziwiony, bo\n"
-        u"nie odczułeś w żaden sposób skutków upadku.\n\nPodchodzisz do "
-        u"drewnianego stołu, na którym znajdują się trzy fiolki z płynami\n"
-        u"o różnych kolorach. Dostrzegasz również pustą fiolkę wiszącą na\n"
-        u"ścianie z napisem \"Wybieraj\".\n"
-        u"1. Wlej zawartość fiolki z podpisem \"Szczęście\".\n"
-        u"2. Wlej zawartość fiolki z podpisem \"Miłosierność\".\n"
-        u"3. Wlej zawartość fiolki z podpisem \"Skromność\"."
+        u"az w koncu ladujesz w prawie pustym pokoju. Jestes zdziwiony, bo\n"
+        u"nie odczules w zaden sposob skutkow upadku.\n\nPodchodzisz do "
+        u"drewnianego stolu, na ktorym znajduja sie trzy fiolki z plynami\n"
+        u"o roznych kolorach. Dostrzegasz rowniez pusta fiolke wiszaca na\n"
+        u"scianie z napisem \"Wybieraj\".\n"
+        u"1. Wlej zawartosc fiolki z podpisem \"Szczescie\".\n"
+        u"2. Wlej zawartosc fiolki z podpisem \"Milosiernosc\".\n"
+        u"3. Wlej zawartosc fiolki z podpisem \"Skromnosc\"."
     )
     fiolka = wybor(3)
     if fiolka == 2:
         print (
-            u"\nWlewasz płyn do pustej fiolki i obserwujesz, jak ściana\n"
-            u"wysuwa się odsłaniając kolejne pomieszczenie. Zadowolony\n"
-            u"wchodzisz do środka."
+            u"\nWlewasz plyn do pustej fiolki i obserwujesz, jak sciana\n"
+            u"wysuwa sie odslaniajac kolejne pomieszczenie. Zadowolony\n"
+            u"wchodzisz do srodka."
         )
         dodaj_wywolanie("krolicza_nora_2")
     else:
         print (
-            u"\nWlewasz płyn do pustej fiolki. Nic się nie dzieje. Czekasz\n"
-            u"kilkanaście minut po czym zrezygnowany wylewasz zawartość\n"
-            u"i wlewasz płyny z pozostałych fiolek. Żadna nie podziałała.\n"
-            u"Zastanawiasz się, co dalej, przeszukujesz całe pomieszczenie,\n"
-            u"ale nic nie znajdujesz. Wpadasz na pomysł, że być może musisz\n"
-            u"wypić jeden z napojów. Bierzesz więc ten, który wybrałeś\n"
-            u"na początku i pijesz do dna. Po chwili odczuwasz zawroty głowy\n"
-            u"i upadasz. Zastanawiasz się, po co wszedłeś do zakazanego lasu?\n"
+            u"\nWlewasz plyn do pustej fiolki. Nic sie nie dzieje. Czekasz\n"
+            u"kilkanascie minut po czym zrezygnowany wylewasz zawartosc\n"
+            u"i wlewasz plyny z pozostalych fiolek. zadna nie podzialala.\n"
+            u"Zastanawiasz sie, co dalej, przeszukujesz cale pomieszczenie,\n"
+            u"ale nic nie znajdujesz. Wpadasz na pomysl, ze byc moze musisz\n"
+            u"wypic jeden z napojow. Bierzesz wiec ten, ktory wybrales\n"
+            u"na poczatku i pijesz do dna. Po chwili odczuwasz zawroty glowy\n"
+            u"i upadasz. Zastanawiasz sie, po co wszedles do zakazanego lasu?\n"
         )
         dodaj_wywolanie("przegrana")
 
@@ -208,37 +212,37 @@ def krolicza_nora_2():
     global decyzje
     global ekwipunek
     print (
-        u"\nW kolejnym pokoju wita Cię piszczący z rozpaczy wilk zamknięty\n"
-        u"w dużej klatce na środku pomieszczenia. Zauważasz na końcu pokoju\n"
-        u"napis \"Wyjście\" i głęboką, wąską wyrwę obok. Na końcu dziury\n"
-        u"dostrzegasz przycisk, ale nie jesteś w stanie przecisnąć ręki.\n"
-        u"Znajdujesz w rogu kołek i idziesz w stronę drzwi, ale wilk\n"
-        u"przypomina o sobie swoim piszczeniem. Wygląda na głodnego...\n"
-        u"Otwierasz drzwi, ale ostatni raz spoglądasz się na uwięzionego\n"
-        u"drapieżnika.\n"
-        u"1. Wróć do rozdroża.\n"
+        u"\nW kolejnym pokoju wita Cie piszczacy z rozpaczy wilk zamkniety\n"
+        u"w duzej klatce na srodku pomieszczenia. Zauwazasz na koncu pokoju\n"
+        u"napis \"Wyjscie\" i gleboka, waska wyrwe obok. Na koncu dziury\n"
+        u"dostrzegasz przycisk, ale nie jestes w stanie przecisnac reki.\n"
+        u"Znajdujesz w rogu kolek i idziesz w strone drzwi, ale wilk\n"
+        u"przypomina o sobie swoim piszczeniem. Wyglada na glodnego...\n"
+        u"Otwierasz drzwi, ale ostatni raz spogladasz sie na uwiezionego\n"
+        u"drapieznika.\n"
+        u"1. Wroc do rozdroza.\n"
         u"2. Najpierw uwolnij wilka."
     )
-    ekwipunek.append("Kołek")
+    ekwipunek.append("Kolek")
     dzialanie = wybor(2)
     if dzialanie == 1:
         print (
-            u"\nWychodzisz z pomieszczenia, a zaraz za Tobą drzwi same się\n"
-            u"zatrzaskują. Za nimi słyszysz głośno skomlącego wilka, a po chwili\n"
-            u"strzał. Skomlenie ustało. Wilk nie żyje. Nie jesteś w stanie\n"
-            u"otworzyć drzwi, więc biegniesz, ile sił w nogach, byle dalej\n"
-            u"od tego przeklętego miejsca."
+            u"\nWychodzisz z pomieszczenia, a zaraz za Toba drzwi same sie\n"
+            u"zatrzaskuja. Za nimi slyszysz glosno skomlacego wilka, a po chwili\n"
+            u"strzal. Skomlenie ustalo. Wilk nie zyje. Nie jestes w stanie\n"
+            u"otworzyc drzwi, wiec biegniesz, ile sil w nogach, byle dalej\n"
+            u"od tego przekletego miejsca."
         )
         decyzje["pomoc"] = False
     elif dzialanie == 2:
         print (
-            u"\nZamek okazał się prosty do złamania, więc otworzyłeś dzrzwiczki\n"
-            u"od klatki. Wilk wybiegł z niej zadowolony i ustawił się w pozycji\n"
-            u"jakby chciał skoczyć Tobie na głowę. Instyktownie przybrałeś postawę\n"
-            u"obronną, ale zwierzę najwyraźniej się rozmyśliło i wybiegło przez \n"
-            u"otwarte drzwi. Uspokajając się również wyszedłeś. Drzwi\n"
-            u"zatrzasnęły się za Tobą, a wilka nie było słychać ani widać.\n"
-            u"Zadowolony opuszczasz to przeklęte miejsce."
+            u"\nZamek okazal sie prosty do zlamania, wiec otworzyles dzrzwiczki\n"
+            u"od klatki. Wilk wybiegl z niej zadowolony i ustawil sie w pozycji\n"
+            u"jakby chcial skoczyc Tobie na glowe. Instyktownie przybrales postawe\n"
+            u"obronna, ale zwierze najwyrazniej sie rozmyslilo i wybieglo przez \n"
+            u"otwarte drzwi. Uspokajajac sie rowniez wyszedles. Drzwi\n"
+            u"zatrzasnely sie za Toba, a wilka nie bylo slychac ani widac.\n"
+            u"Zadowolony opuszczasz to przeklete miejsce."
         )
     dodaj_wywolanie("rozdroze")
 
@@ -246,66 +250,66 @@ def sciezka_w_prawo():
     global decyzje
     global ekwipunek
     print (
-        u"\nIdziesz ścieżką, aż w końcu napotykasz na rzekę. Po drugiej stronie\n"
-        u"zauważasz dalszą część drogi, ale musisz znaleźć sposób, aby\n"
-        u"przedostać się na drugą stronę.\n"
+        u"\nIdziesz sciezka, az w koncu napotykasz na rzeke. Po drugiej stronie\n"
+        u"zauwazasz dalsza czesc drogi, ale musisz znalezc sposob, aby\n"
+        u"przedostac sie na druga strone.\n"
         u"1. Zwal drzewo.\n"
-        u"2. Zawróć."
+        u"2. Zawroc."
     )
     liczba_wyborow = 2
     if "Lina" in ekwipunek:
-        print u"3. Użyj liny."
+        print u"3. Uzyj liny."
         liczba_wyborow = 3
     dzialanie = wybor(liczba_wyborow)
     if dzialanie == 1:
         decyzje["rzeka_drzewo"] = True
         print (
-            u"\nZauważasz dosyć mocno ścięte drzewo. Postanawiasz je wykorzystać\n"
-            u"i do niego podchodzisz. Używasz całej swojej siły, aby je zwalić\n"
-            u"w kierunku rzeki. Udało Ci się! W dodatku okazało się, że jest\n"
-            u"dostatecznie wysokie i uczepiło się drugiego brzegu. Możesz\n"
-            u"teraz po nim przejść na drugą stronę, co z dumą wykonujesz.\n"
-            u"Zaraz po Twoim przejściu, zwalony pień porywa zwiększony\n"
-            u"prąd rzeki.\n"
+            u"\nZauwazasz dosyc mocno sciete drzewo. Postanawiasz je wykorzystac\n"
+            u"i do niego podchodzisz. Uzywasz calej swojej sily, aby je zwalic\n"
+            u"w kierunku rzeki. Udalo Ci sie! W dodatku okazalo sie, ze jest\n"
+            u"dostatecznie wysokie i uczepilo sie drugiego brzegu. Mozesz\n"
+            u"teraz po nim przejsc na druga strone, co z duma wykonujesz.\n"
+            u"Zaraz po Twoim przejsciu, zwalony pien porywa zwiekszony\n"
+            u"prad rzeki.\n"
         )
         dodaj_wywolanie("za_rzeka")
     elif dzialanie == 2:
         print (
-            u"\nStwierdzasz, że nie musisz (przynajmniej na razie) przechodzić\n"
-            u"na drugą stronę, więc zawracasz."
+            u"\nStwierdzasz, ze nie musisz (przynajmniej na razie) przechodzic\n"
+            u"na druga strone, wiec zawracasz."
         )
         dodaj_wywolanie("rozdroze")
     elif dzialanie == 3:
         print (
-            u"\nDostrzegasz na drugim brzegu przybity kołek, o który\n"
-            u"z powodzeniem mógłbyś zaczepić linę rzucająć jej pętelką zawiązaną\n"
-            u"na końcu. Brakuje Ci jedynie czegoś, do czego mógłbyś ją przywiązać.\n"
-            u"Lina jest za krótka, aby można było ją obwiązać wokół drzewa."
+            u"\nDostrzegasz na drugim brzegu przybity kolek, o ktory\n"
+            u"z powodzeniem moglbys zaczepic line rzucajac jej petelka zawiazana\n"
+            u"na koncu. Brakuje Ci jedynie czegos, do czego moglbys ja przywiazac.\n"
+            u"Lina jest za krotka, aby mozna bylo ja obwiazac wokol drzewa."
         )
-        if "Kołek" not in ekwipunek:
+        if "Kolek" not in ekwipunek:
             print (
-                u"Rezygnujesz więc pomysłu przepłynięcia przez rwącą rzekę\n"
-                u"trzymając się liny i wracasz do rozdroża."
+                u"Rezygnujesz wiec pomyslu przeplyniecia przez rwaca rzeke\n"
+                u"trzymajac sie liny i wracasz do rozdroza."
             )
             dodaj_wywolanie("rozdroze")
         else:
             print (
-                u"\nPrzypominasz sobie nagle o kołku z nory, który zachowałeś.\n"
-                u"Wbijasz go w ziemię. Rzucasz liną na drugi brzeg. Trafiłeś\n"
-                u"idealnie w kołek! Drugi koniec zahaczasz o swój i przepływasz\n"
-                u"przez rzekę trzymając się kurczowo liny.\n"
-                u"Udaje Ci się dotrzeć na drugi brzeg. Chociaż jesteś całkowicie\n"
-                u"przemoczony, odczuwasz zadowolenie. Wziąłeś linę i zauważyłeś,\n"
-                u"że mało brakowało do jej rozerwania. Nie wrócisz na drugi brzeg.\n"
+                u"\nPrzypominasz sobie nagle o kolku z nory, ktory zachowales.\n"
+                u"Wbijasz go w ziemie. Rzucasz lina na drugi brzeg. Trafiles\n"
+                u"idealnie w kolek! Drugi koniec zahaczasz o swoj i przeplywasz\n"
+                u"przez rzeke trzymajac sie kurczowo liny.\n"
+                u"Udaje Ci sie dotrzec na drugi brzeg. Chociaz jestes calkowicie\n"
+                u"przemoczony, odczuwasz zadowolenie. Wziales line i zauwazyles,\n"
+                u"ze malo brakowalo do jej rozerwania. Nie wrocisz na drugi brzeg.\n"
             )
             dodaj_wywolanie("za_rzeka")
 
 def za_rzeka():
     print (
-        u"\nMimo braku możliwości powrotu idziesz hardo ścieżką. Na jej końcu\n"
-        u"znajdujesz niewielką, drewnianą chatkę.\n"
-        u"1. Wejdź do chatki.\n"
-        u"2. Zawróć."
+        u"\nMimo braku mozliwosci powrotu idziesz hardo sciezka. Na jej koncu\n"
+        u"znajdujesz niewielka, drewniana chatke.\n"
+        u"1. Wejdz do chatki.\n"
+        u"2. Zawroc."
     )
     while True:
         dzialanie = wybor(2)
@@ -313,7 +317,7 @@ def za_rzeka():
             dodaj_wywolanie("wiedzma")
             return
         elif dzialanie == 2:
-            print u"\nNie ma sensu wracać!"
+            print u"\nNie ma sensu wracac!"
 
 def wiedzma():
     global decyzje
@@ -321,17 +325,17 @@ def wiedzma():
     bilans = 0
     licznik_klamstw = 0
     print (
-        u"\nWchodzisz do chatki, a przed Tobą pojawia się stara kobieta o siwych\n"
-        u"włosach."
+        u"\nWchodzisz do chatki, a przed Toba pojawia sie stara kobieta o siwych\n"
+        u"wlosach."
     )
     # Pytanie pierwsze: jedzenie
     jedzenie = None
     if "Jedzenie" in ekwipunek:
         print (
-            u"\n- Nie jadłam nic od tygodni, mógłbyś mi dać swoje jedzenie?\n"
-            u"Byłeś zaskoczony jej wiedzą na temat Twoich jagódek.\n"
+            u"\n- Nie jadlam nic od tygodni, moglbys mi dac swoje jedzenie?\n"
+            u"Byles zaskoczony jej wiedza na temat Twoich jagodek.\n"
             u"1. Daj jej jedzenie.\n"
-            u"2. Powiedz, że nie masz jedzenia."
+            u"2. Powiedz, ze nie masz jedzenia."
         )
         dzialanie = wybor(2)
         if dzialanie == 1:
@@ -341,31 +345,31 @@ def wiedzma():
     if jedzenie != None:
         if jedzenie == True:
             print (
-                u"\n- Jesteś hojnym człowiekiem! Zostaw sobie to jedzenie."
+                u"\n- Jestes hojnym czlowiekiem! Zostaw sobie to jedzenie."
             )
             bilans += 1
         else:
             print (
-                u"\n- Nie chcesz dzielić się z bliźnim? Niech tak będzie!"
+                u"\n- Nie chcesz dzielic sie z bliznim? Niech tak bedzie!"
             )
             bilans -= 1
     #print ("licznik_klamstw =", licznik_klamstw)
     #print ("bilans =", bilans)
     # Pytania moralne
     print (
-        u"\nPodrapała się po głowie i powiedziała:\n"
-        u"- Nie powinieneś był wchodzić do zakazanego lasu. Należy czytać znaki.\n"
-        u"Masz szczęście, że doszedłeś tu do mnie. Pomogę Ci, ale najpierw\n"
-        u"odpowiedz mi na kilka pytań, od których zależy, jak się skończy\n"
-        u"twa podróż. Nie próbuj żadnych sztuczek, bo jestem w stanie\n"
-        u"Cię zabić jednym machnięciem ręki.\n\n"
-        u"Zaprezentowała to machając ręką i niszcząc wazon stojący na stole.\n"
+        u"\nPodrapala sie po glowie i powiedziala:\n"
+        u"- Nie powinienes byl wchodzic do zakazanego lasu. Nalezy czytac znaki.\n"
+        u"Masz szczescie, ze doszedles tu do mnie. Pomoge Ci, ale najpierw\n"
+        u"odpowiedz mi na kilka pytan, od ktorych zalezy, jak sie skonczy\n"
+        u"twa podroz. Nie probuj zadnych sztuczek, bo jestem w stanie\n"
+        u"Cie zabic jednym machnieciem reki.\n\n"
+        u"Zaprezentowala to machajac reka i niszczac wazon stojacy na stole.\n"
     )
-    # Pytanie drugie: przejście przez rzekę
+    # Pytanie drugie: przejscie przez rzeke
     print (
-        u"- Na początek chciałabym się dowiedzieć, jak przeszedłeś przez rzekę?\n"
-        u"1. \"Zwaliłem drzewo.\"\n"
-        u"2. \"Przepłynąłem. Nie widać?\""
+        u"- Na poczatek chcialabym sie dowiedziec, jak przeszedles przez rzeke?\n"
+        u"1. \"Zwalilem drzewo.\"\n"
+        u"2. \"Przeplynalem. Nie widac?\""
     )
     odpowiedz = wybor(2)
     rzeka_drzewo = False
@@ -379,10 +383,10 @@ def wiedzma():
         licznik_klamstw += 1
     #print ("licznik_klamstw =", licznik_klamstw)
     #print ("bilans =", bilans)
-    # Pytanie trzecie: zabójstwo
+    # Pytanie trzecie: zabojstwo
     print (
-        u"- Załóżmy, że Ci wierzę. Kolejne pytanie: czy zabiłeś kiedyś\n"
-        u"żywe stworzenie?\n"
+        u"- Zalozmy, ze Ci wierze. Kolejne pytanie: czy zabiles kiedys\n"
+        u"zywe stworzenie?\n"
         u"1. \"Tak.\"\n"
         u"2. \"Nie.\""
     )
@@ -398,11 +402,11 @@ def wiedzma():
         licznik_klamstw += 1
     #print ("licznik_klamstw =", licznik_klamstw)
     #print ("bilans =", bilans)
-    # Pytanie czwarte: miłosierność
+    # Pytanie czwarte: milosiernosc
     print (
-        u"- Czasami nie mamy wyboru, ale gdy go mamy, to często nie\n"
-        u"wykorzystujemy go dobrze... Następne pytanie! Czy pomogłeś\n"
-        u"kiedyś jakiemuś stworzeniu b e z i n t e r e s o w n i e ?\n"
+        u"- Czasami nie mamy wyboru, ale gdy go mamy, to czesto nie\n"
+        u"wykorzystujemy go dobrze... Nastepne pytanie! Czy pomogles\n"
+        u"kiedys jakiemus stworzeniu b e z i n t e r e s o w n i e ?\n"
         u"1. \"Tak.\"\n"
         u"2. \"Nie.\""
     )
@@ -420,79 +424,79 @@ def wiedzma():
     #print ("bilans =", bilans)
     # Pytanie dodatkowe [Colobot - easter egg]
     print (
-        u"- Należy być miłosiernym dla bliźniego, nawet największego wroga!\n"
-        u"Ostatnie pytanie: czy widziałeś gdzieś może pewną przerośniętą,\n"
-        u"zieloną mrówkę? Zgubiła mi się...\n"
+        u"- Nalezy byc milosiernym dla blizniego, nawet najwiekszego wroga!\n"
+        u"Ostatnie pytanie: czy widziales gdzies moze pewna przerosnieta,\n"
+        u"zielona mrowke? Zgubila mi sie...\n"
         u"1. \"Tak.\"\n"
         u"2. \"Nie.\""
     )
     odpowiedz = wybor(2)
     print (
         u"- To bez znaczenia!\n"
-        u"Wiedźma zamyśliła się...\n"
+        u"Wiedzma zamyslila sie...\n"
     )
     # Podsumowanie
     if licznik_klamstw == 0:
-        print u"- Nie okłamałeś mnie..."
+        print u"- Nie oklamales mnie..."
     else:
-        print u"- Coś kręcisz..."
+        print u"- Cos krecisz..."
     if jedzenie != None:
         if jedzenie:
-            print u"- Chciałeś podarować mi jedzenie..."
+            print u"- Chciales podarowac mi jedzenie..."
         else:
-            print u"- Pożałowałeś mi jedzenia..."
+            print u"- Pozalowales mi jedzenia..."
     if decyzje["rzeka_drzewo"]:
-        print u"- Zniszczyłeś naturę..."
+        print u"- Zniszczyles nature..."
     else:
-        print u"- Szanujesz naturę..."
+        print u"- Szanujesz nature..."
     if not (decyzje["wilk"] and decyzje["pomoc"]):
-        print u"- Zabiłeś żywe stworzenie..."
+        print u"- Zabiles zywe stworzenie..."
     else:
-        print u"- Nie dokonałeś nigdy zabójstwa..."
+        print u"- Nie dokonales nigdy zabojstwa..."
     if decyzje["nora"] and decyzje["pomoc"]:
-        print u"- Pomogłeś bliźniemu..."
+        print u"- Pomogles blizniemu..."
     elif decyzje["nora"]:
-        print u"- Zignorowałeś bliźniego w potrzebie..."
+        print u"- Zignorowales blizniego w potrzebie..."
     bilans -= licznik_klamstw
     #print ("licznik_klamstw =", licznik_klamstw)
     #print ("bilans =", bilans)
     if bilans < 0:
         print (
-            u"- Być może działałeś zgodnie ze swoim sumieniem, ale to za mało!\n"
-            u"Obawiam się, że nie mogę Cię wypuścić z tego lasu.\n\n"
-            u"Wiedźma machnęła ręką i nagle poczułeś, jak Twoje ciało drętwieje.\n"
-            u"Po co wchodziłeś do zakazanego lasu?\n"
+            u"- Byc moze dzialales zgodnie ze swoim sumieniem, ale to za malo!\n"
+            u"Obawiam sie, ze nie moge Cie wypuscic z tego lasu.\n\n"
+            u"Wiedzma machnela reka i nagle poczules, jak Twoje cialo dretwieje.\n"
+            u"Po co wchodziles do zakazanego lasu?\n"
         )
         dodaj_wywolanie("przegrana")
     else:
         print (
-            u"- Dobrze! Niech Ci będzie, pozwolę Ci wrócić, ale muszę użyć magii,\n"
-            u"która bywa kapryśna. Mnie przekonałeś, przekonaj teraz naturę!\n"
+            u"- Dobrze! Niech Ci bedzie, pozwole Ci wrocic, ale musze uzyc magii,\n"
+            u"ktora bywa kaprysna. Mnie przekonales, przekonaj teraz nature!\n"
             u"Oto jej zagadka:\n\n"
-            u"P i e r w s z e to w wyścigu ostatniemu mówiono kierowcy,\n"
-            u"D r u g i e to drugie pół składnika szkieletu.\n"
+            u"P i e r w s z e to w wyscigu ostatniemu mowiono kierowcy,\n"
+            u"D r u g i e to drugie pol skladnika szkieletu.\n"
             u"1. \"Ostatni Trup?\"\n"
-            u"2. \"Samochód?\"\n"
-            u"3. \"Wolność?\"\n"
-            u"4. \"Patrz na drogę, bo umrzesz?\"\n"
+            u"2. \"Samochod?\"\n"
+            u"3. \"Wolnosc?\"\n"
+            u"4. \"Patrz na droge, bo umrzesz?\"\n"
             u"5. \"Prawo?\""
         )
         odpowiedz = wybor(5)
         if odpowiedz == 3:
             print (
-                u"Nagle poczułeś, jakby coś Cię wyrzuciło w powietrze\n"
-                u"i zaczęło Ci się kręcić w głowie, aż w końcu straciłeś\n"
-                u"przytomność. Obudziłeś się pomiędzy wejściem do\n"
-                u"Zakazanego Lasu a swoim domem. To było ciekawe\n"
-                u"przeżycie...\n"
+                u"Nagle poczules, jakby cos Cie wyrzucilo w powietrze\n"
+                u"i zaczelo Ci sie krecic w glowie, az w koncu straciles\n"
+                u"przytomnosc. Obudziles sie pomiedzy wejsciem do\n"
+                u"Zakazanego Lasu a swoim domem. To bylo ciekawe\n"
+                u"przezycie...\n"
             )
             dodaj_wywolanie("wygrana")
         else:
             print (
-                u"Wiedźma posępniała.\n"
-                u"- To zła odpowiedź... Twoj szczątki będą spoczywały w tym\n"
+                u"Wiedzma posepniala.\n"
+                u"- To zla odpowiedz... Twoj szczatki beda spoczywaly w tym\n"
                 u"lesie. Przykro mi!\n\n"
-                u"Machnęła ręką."
+                u"Machnela reka."
             )
             dodaj_wywolanie("przegrana")
 
@@ -500,26 +504,26 @@ def szelest():
     global decyzje
     if decyzje["szelest"]:
         print (
-            u"\nZmierzasz w stronę krzaków, w której spotkałeś wilka, ale szybko\n"
-            u"stwierdzasz, że nie powinieneś tam iść drugi raz."
+            u"\nZmierzasz w strone krzakow, w ktorej spotkales wilka, ale szybko\n"
+            u"stwierdzasz, ze nie powinienes tam isc drugi raz."
         )
         dodaj_wywolanie("rozdroze")
     else:
         decyzje["szelest"] = True
         print (
-            u"\nPodchodzisz ostrożnie do krzaków, z których wydobył się tajemniczy szelest.\n"
-            u"Upewniając się, że nic Ci nie grozi, przekraczasz je i odkrywasz, że\n"
-            u"w tym miejscu został ślad po dawnej drodze. Uradowany z powodu odkrycia\n"
-            u"i zaciekawiony podążasz nią dalej. Po kilku minutach zacząłeś się\n"
-            u"zastanawiać, czy aby na pewno jesteś jeszcze na drodze. Doszedłeś\n"
-            u"do wniosku, że nie. Zdezorientowany nie możesz znaleźć drogi powrotnej.\n"
-            u"Zgubiłeś się.\n"
-            u"Jednak nie masz wyboru, nie możesz tu zostać. Zauważasz mech rosnący na\n"
-            u"drzewie, który wskazuje północ. W którym kierunku iść?\n"
-            u"1. Północ. Drzewa wydają Ci się trochę inne niż pozostałe...\n"
-            u"2. Wschód. Słychać stamtąd dźwięki, jakby jakieś zwierzę coś jadło.\n"
-            u"3. Południe. Wydobywa się stamtąd dziwny zapach.\n"
-            u"4. Zachód. Również coś czujesz w nozdrzach..."
+            u"\nPodchodzisz ostroznie do krzakow, z ktorych wydobyl sie tajemniczy szelest.\n"
+            u"Upewniajac sie, ze nic Ci nie grozi, przekraczasz je i odkrywasz, ze\n"
+            u"w tym miejscu zostal slad po dawnej drodze. Uradowany z powodu odkrycia\n"
+            u"i zaciekawiony podazasz nia dalej. Po kilku minutach zaczales sie\n"
+            u"zastanawiac, czy aby na pewno jestes jeszcze na drodze. Doszedles\n"
+            u"do wniosku, ze nie. Zdezorientowany nie mozesz znalezc drogi powrotnej.\n"
+            u"Zgubiles sie.\n"
+            u"Jednak nie masz wyboru, nie mozesz tu zostac. Zauwazasz mech rosnacy na\n"
+            u"drzewie, ktory wskazuje polnoc. W ktorym kierunku isc?\n"
+            u"1. Polnoc. Drzewa wydaja Ci sie troche inne niz pozostale...\n"
+            u"2. Wschod. Slychac stamtad dzwieki, jakby jakies zwierze cos jadlo.\n"
+            u"3. Poludnie. Wydobywa sie stamtad dziwny zapach.\n"
+            u"4. Zachod. Rowniez cos czujesz w nozdrzach..."
         )
         dzialanie = wybor(4)
 
@@ -535,12 +539,12 @@ def szelest():
 def szelest_hub():
     global decyzje
     print (
-        u"\nPoznajesz miejsce, w którym się znalazłeś. Patrzysz na mech\n"
-        u"i decydujesz się pójść tym razem w inną stronę.\n"
-        u"1. Północ. Drzewa wydają Ci się trochę inne niż pozostałe...\n"
-        u"2. Wschód. Słychać stamtąd dźwięki, jakby jakieś zwierzę coś jadło.\n"
-        u"3. Południe. Wydobywa się stamtąd dziwny zapach.\n"
-        u"4. Zachód. Również coś czujesz w nozdrzach..."
+        u"\nPoznajesz miejsce, w ktorym sie znalazles. Patrzysz na mech\n"
+        u"i decydujesz sie pojsc tym razem w inna strone.\n"
+        u"1. Polnoc. Drzewa wydaja Ci sie troche inne niz pozostale...\n"
+        u"2. Wschod. Slychac stamtad dzwieki, jakby jakies zwierze cos jadlo.\n"
+        u"3. Poludnie. Wydobywa sie stamtad dziwny zapach.\n"
+        u"4. Zachod. Rowniez cos czujesz w nozdrzach..."
     )
     while True:
         dzialanie = wybor(4)
@@ -557,20 +561,20 @@ def szelest_hub():
             dodaj_wywolanie("szelest_zachod")
             return
         else:
-            print u"Już tam byłeś!"
+            print u"Juz tam byles!"
 
 def szelest_polnoc():
     global decyzje
     decyzje["szelest_polnoc"] = True
     print (
-        u"\nPostanowiłeś ruszyć na północ. Idziesz ostrożnie deptając\n"
-        u"po gałęziach. Nagle słyszysz głośny trzask i ogromny ból w nodze.\n"
-        u"Z przerażeniem obserwujesz, jak pułapka zakleszczyła się\n"
-        u"na Twojej nodze. Upadasz i zwijasz się z bólu. Słyszysz zmierzające\n"
-        u"w Twoim kierunku wilki, które zwabił zapach krwi. Przypatrują się\n"
-        u"Tobie, ich kolejnej ofiarze. Już wiesz, że to się źle skończy.\n"
-        u"Jeden z wilków rzuca się do Twojego gardła i już nawet nie próbujesz\n"
-        u"się bronić. Po co poszedłeś do tego zakazengo lasu?\n"
+        u"\nPostanowiles ruszyc na polnoc. Idziesz ostroznie deptajac\n"
+        u"po galeziach. Nagle slyszysz glosny trzask i ogromny bol w nodze.\n"
+        u"Z przerazeniem obserwujesz, jak pulapka zakleszczyla sie\n"
+        u"na Twojej nodze. Upadasz i zwijasz sie z bolu. Slyszysz zmierzajace\n"
+        u"w Twoim kierunku wilki, ktore zwabil zapach krwi. Przypatruja sie\n"
+        u"Tobie, ich kolejnej ofiarze. Juz wiesz, ze to sie zle skonczy.\n"
+        u"Jeden z wilkow rzuca sie do Twojego gardla i juz nawet nie probujesz\n"
+        u"sie bronic. Po co poszedles do tego zakazengo lasu?\n"
     )
     dodaj_wywolanie("przegrana")
 
@@ -579,44 +583,44 @@ def szelest_wschod():
     global ekwipunek
     decyzje["szelest_wschod"] = True
     print (
-        u"Im bardziej zbliżasz się do źródła niepokojących dźwięków,\n"
-        u"tym bardziej Twój strach się nasila. Po pewnym czasie dostrzegasz\n"
-        u"zwłoki sarny, którymi zajadał się wilk. Wstrzymujesz oddech\n"
-        u"i cofasz się, ale niechcący łamiesz gałązkę, przez co drapieżnik\n"
-        u"Cię zauważa. Zaczynasz uciekać w niewiadomym kierunku.\n"
-        u"Wydaje Ci się, że trwało to wieczność, ale jakimś cudem trafiłeś\n"
-        u"do znajomego rozdroża. Zatrzymujesz się i oglądasz się za siebie,\n"
-        u"aby sprawdzić, czy wilk biegnie za Tobą. Niestety tak!\n"
+        u"Im bardziej zblizasz sie do zrodla niepokojacych dzwiekow,\n"
+        u"tym bardziej Twoj strach sie nasila. Po pewnym czasie dostrzegasz\n"
+        u"zwloki sarny, ktorymi zajadal sie wilk. Wstrzymujesz oddech\n"
+        u"i cofasz sie, ale niechcacy lamiesz galazke, przez co drapieznik\n"
+        u"Cie zauwaza. Zaczynasz uciekac w niewiadomym kierunku.\n"
+        u"Wydaje Ci sie, ze trwalo to wiecznosc, ale jakims cudem trafiles\n"
+        u"do znajomego rozdroza. Zatrzymujesz sie i ogladasz sie za siebie,\n"
+        u"aby sprawdzic, czy wilk biegnie za Toba. Niestety tak!\n"
     )
-    if "Broń" not in ekwipunek and "Jedzenie" not in ekwipunek:
+    if "Bron" not in ekwipunek and "Jedzenie" not in ekwipunek:
         print (
-            u"Jesteś zbyt wycieńczony biegiem, by dalej uciekać. Czekasz, aż\n"
-            u"drapieżnik się zbliży i liczysz na to, że uda Ci się wykorzystać\n"
-            u"szansę i się obronić. Wilk skacze na Ciebie i dopada do gardła.\n"
-            u"Mimo wszelkich wysiłków, nie udaje Ci się go odepchnąć.\n"
-            u"Po co wszedłeś do zakazanego lasu?\n"
+            u"Jestes zbyt wycienczony biegiem, by dalej uciekac. Czekasz, az\n"
+            u"drapieznik sie zblizy i liczysz na to, ze uda Ci sie wykorzystac\n"
+            u"szanse i sie obronic. Wilk skacze na Ciebie i dopada do gardla.\n"
+            u"Mimo wszelkich wysilkow, nie udaje Ci sie go odepchnac.\n"
+            u"Po co wszedles do zakazanego lasu?\n"
         )
         dodaj_wywolanie("przegrana")
-    elif "Broń" in ekwipunek:
+    elif "Bron" in ekwipunek:
         print (
-            u"Jesteś zbyt wycieńczony biegiem, by dalej uciekać. Czekasz, aż\n"
-            u"drapieżnik się zbliży i liczysz na to, że uda Ci się wykorzystać\n"
-            u"szansę i obronić się.\n"
-            u"Przypominasz sobie o nożu, który znalazłeś. Wydobywasz go z kieszeni.\n"
-            u"Wilk skacze na Ciebie, a Ty machasz nożem na oślep. Czujesz opór.\n"
-            u"Otwierasz oczy i widzisz wykrwawiające się zwierzę.\n"
-            u"Po co wszedłeś do zakazanego lasu?\n"
-            u"Czekasz, aż wilk przestanie się ruszać. Chowasz jego ciało za krzakami."
+            u"Jestes zbyt wycienczony biegiem, by dalej uciekac. Czekasz, az\n"
+            u"drapieznik sie zblizy i liczysz na to, ze uda Ci sie wykorzystac\n"
+            u"szanse i obronic sie.\n"
+            u"Przypominasz sobie o nozu, ktory znalazles. Wydobywasz go z kieszeni.\n"
+            u"Wilk skacze na Ciebie, a Ty machasz nozem na oslep. Czujesz opor.\n"
+            u"Otwierasz oczy i widzisz wykrwawiajace sie zwierze.\n"
+            u"Po co wszedles do zakazanego lasu?\n"
+            u"Czekasz, az wilk przestanie sie ruszac. Chowasz jego cialo za krzakami."
         )
         decyzje["wilk"] = False
         dodaj_wywolanie("rozdroze")
     elif "Jedzenie" in ekwipunek:
         print (
-            u"Nie zastanawiając się długo, postanawiasz rzucić się do dalszej\n"
-            u"ucieczki. Nie masz pojęcia, jaką ścieżkę wybrałeś, ale biegniesz.\n"
-            u"Nagle widzisz przed sobą rzekę i zaczynasz myśleć, że wszystko stracone.\n"
-            u"Jednak oglądasz się za siebie i widzisz, że wilk już Cię nie goni.\n"
-            u"Uradowany poisz się wodą z rzeki po czym wracasz ścieżką."
+            u"Nie zastanawiajac sie dlugo, postanawiasz rzucic sie do dalszej\n"
+            u"ucieczki. Nie masz pojecia, jaka sciezke wybrales, ale biegniesz.\n"
+            u"Nagle widzisz przed soba rzeke i zaczynasz myslec, ze wszystko stracone.\n"
+            u"Jednak ogladasz sie za siebie i widzisz, ze wilk juz Cie nie goni.\n"
+            u"Uradowany poisz sie woda z rzeki po czym wracasz sciezka."
         )
         decyzje["wilk"] = True
         dodaj_wywolanie("rozdroze")
@@ -626,14 +630,14 @@ def szelest_poludnie():
     global ekwipunek
     decyzje["szelest_poludnie"] = True
     print (
-        u"\nNiewiele kroków musiałeś przejść, aby dostrzec, skąd wydobywa\n"
-        u"się nieprzyjemny zapach. Na ziemi leżą zwłoki, szkielet człowieka.\n"
-        u"Odruchowo zatykasz nos i cofasz się, ale po chwili podchodzisz,\n"
-        u"aby sprawdzić, czy nie ma tu przypadkiem czegoś przydatnego.\n"
-        u"Poza długim i dosyć ostrym nożem i liną nie znajdujesz nic godnego uwagi.\n"
-        u"Bierzesz go ze sobą, razem z długą liną."
+        u"\nNiewiele krokow musiales przejsc, aby dostrzec, skad wydobywa\n"
+        u"sie nieprzyjemny zapach. Na ziemi leza zwloki, szkielet czlowieka.\n"
+        u"Odruchowo zatykasz nos i cofasz sie, ale po chwili podchodzisz,\n"
+        u"aby sprawdzic, czy nie ma tu przypadkiem czegos przydatnego.\n"
+        u"Poza dlugim i dosyc ostrym nozem i lina nie znajdujesz nic godnego uwagi.\n"
+        u"Bierzesz go ze soba, razem z dluga lina."
     )
-    ekwipunek.append("Broń")
+    ekwipunek.append("Bron")
     ekwipunek.append("Lina")
     dodaj_wywolanie("szelest_hub")
 
@@ -642,11 +646,11 @@ def szelest_zachod():
     global ekwipunek
     decyzje["szelest_zachod"] = True
     print (
-        u"\nRuszasz w kierunku krzaków na zachodzie. Po kilku sekundach\n"
-        u"z niedowierzaniem dostrzegasz rosnące jagody. Nagle przypomniało\n"
-        u"Ci się, że jesteś głodny, więc zacząłeś jeść. Odczułeś przypływ\n"
-        u"energii i wiary w siebie. Bierzesz trochę na drogę.\n"
-        u"Zgubiłeś kierunek, ale idziesz dalej."
+        u"\nRuszasz w kierunku krzakow na zachodzie. Po kilku sekundach\n"
+        u"z niedowierzaniem dostrzegasz rosnace jagody. Nagle przypomnialo\n"
+        u"Ci sie, ze jestes glodny, wiec zaczales jesc. Odczules przyplyw\n"
+        u"energii i wiary w siebie. Bierzesz troche na droge.\n"
+        u"Zgubiles kierunek, ale idziesz dalej."
     )
     ekwipunek.append("Jedzenie")
     dodaj_wywolanie("szelest_hub")
@@ -655,55 +659,55 @@ def powrot():
     global decyzje
     if not decyzje["drzewo"]:
         print (
-            u"\nOdwracasz się na pięcie i idziesz wydeptaną wcześniej przez siebie\n"
-            u"ścieżką. Nagle, niespodziewanie upada przed Tobą drzewo.\n"
-            u"Wystraszony cofasz się i postanawiasz obejść przeszkodę idąc\n"
-            u"na około, ale gdy tylko zbliżasz się do krawędzi ścieżki,\n"
-            u"zaczynasz słyszeć ciężkie dyszenie i warczenie.\n"
-            u"Lepiej poszukać innej drogi."
+            u"\nOdwracasz sie na piecie i idziesz wydeptana wczesniej przez siebie\n"
+            u"sciezka. Nagle, niespodziewanie upada przed Toba drzewo.\n"
+            u"Wystraszony cofasz sie i postanawiasz obejsc przeszkode idac\n"
+            u"na okolo, ale gdy tylko zblizasz sie do krawedzi sciezki,\n"
+            u"zaczynasz slyszec ciezkie dyszenie i warczenie.\n"
+            u"Lepiej poszukac innej drogi."
         )
         decyzje["drzewo"] = True
     else:
         print (
-            u"\nIdziesz w stronę zawalonego drzewa. Już z oddali widzisz, że\n"
-            u"nic się nie zmieniło. Próbujesz obejść przeszkodę, ale\n"
-            u"niebezpieczeństwo czające się za ścieżką jest zbyt przerażające.\n"
-            u"Zdenerwowany wracasz do rozdroża."
+            u"\nIdziesz w strone zawalonego drzewa. Juz z oddali widzisz, ze\n"
+            u"nic sie nie zmienilo. Probujesz obejsc przeszkode, ale\n"
+            u"niebezpieczenstwo czajace sie za sciezka jest zbyt przerazajace.\n"
+            u"Zdenerwowany wracasz do rozdroza."
         )
 
     dodaj_wywolanie("rozdroze")
 
 def dom():
     print (
-        u"Wracasz do domu. Nie masz ochoty na żadne przygody."
+        u"Wracasz do domu. Nie masz ochoty na zadne przygody."
     )
     dodaj_wywolanie("wygrana")
 
 def wygrana():
     print (
         u"\n\n"
-        u"Gratulacje! Wygrałeś! Chcesz spróbować jeszcze raz?\n"
+        u"Gratulacje! Wygrales! Chcesz sprobowac jeszcze raz?\n"
         u"1. Tak.\n"
         u"2. Nie."
     )
     jeszcze_raz = wybor(2)
 
     if jeszcze_raz == 1:
-        print u"Doskonale! Może odkryjesz coś nowego...\n"
+        print u"Doskonale! Moze odkryjesz cos nowego...\n"
         dodaj_wywolanie("start")
     elif jeszcze_raz == 2:
         exit(0)
 
 def przegrana():
     print (
-        u"Zginąłeś. Chcesz spróbować jeszcze raz?\n"
+        u"Zginales. Chcesz sprobowac jeszcze raz?\n"
         u"1. Tak.\n"
         u"2. Nie."
     )
     jeszcze_raz = wybor(2)
 
     if jeszcze_raz == 1:
-        print u"Doskonale! Nie poddajesz się! Może odkryjesz coś nowego...\n"
+        print u"Doskonale! Nie poddajesz sie! Moze odkryjesz cos nowego...\n"
         dodaj_wywolanie("start")
     elif jeszcze_raz == 2:
         exit(0)
@@ -712,7 +716,7 @@ def reset():
     global ekwipunek
     global decyzje
 
-    # Broń, Lina, Jedzenie, Kołek
+    # Bron, Lina, Jedzenie, Kolek
     ekwipunek = []
 
     decyzje = {
